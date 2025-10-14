@@ -1,0 +1,954 @@
+[Auto-generated transcript. Edits may have been applied for clarity.]
+You. So we're.
+
+Going to discuss that.
+
+Right. Good morning everyone. So today we have our first project Check Point.
+
+So I prepared some slides based on what you said.
+
+Me. Thank you so much. Good to see both directions.
+
+Some of them, they were very detailed. So I'm excited about that.
+
+Uh, so we're going to talk about that for a bit.
+
+Probably most part of the class. Then if we have time I'm going to show you something else.
+
+Uh, which relates to classification models.
+
+Let's see. Uh, I'm not sure I'm going to have time. So maybe the next time I.
+
+You that why you don't see anything else uploaded here rather than PDF, I'm going to use an evaluation template which we're going to discuss.
+
+It's it's the template I'm going to use to evaluate your presentation.
+
+Comprehension was actually about that. So the fact that I prepared the slides and I'm going to talk doesn't mean that you can not intervene.
+
+Actually you should ask questions. Ask clarifications.
+
+It's this is your moment to clarify. Anything about the project.
+
+Does that sound right? This is just for me to have an agenda to follow.
+
+Uh, and I divided, uh, the different questions into sections.
+
+So, uh, obviously this is the first checkpoint.
+
+So most of the questions are about what do we have to do.
+
+We don't know, like how to proceed. We don't know.
+
+What should we do with the data.
+
+So it's totally normal if during the first checkpoint type, those type of questions, you know, we are going to have four of them.
+
+So if and two checkpoints from now let's assume a at the third checkpoint and you see the same questions.
+
+That's a problem because it means you you have not progressed.
+
+So the more we will progress, the more I would expect to see questions around.
+
+We have to fit this model. As we see this type of results, we are unsure about those results or right or not, how can we address this problem.
+
+So. Today. It's very, very early stage, so that's expected.
+
+Um. So, um, those two questions are actually around the the volatility dataset.
+
+Uh, so I guess most of you, uh, asking questions about that.
+
+So obviously I didn't provide a lot of context regarding, uh, how these, uh, quantities are calculated.
+
+So the first question was actually asking how they are calculated.
+
+Those guys are normalizing those, uh, if they were using, uh.
+
+Certain type of returns or not. So. Some conflicts can be found.
+
+Actually, we're at this link where I got the data.
+
+Uh, so I didn't come up with the estimation on my own. Um, and here there is a little bit of a description of what are doing.
+
+You know, that you have realized volatility estimates for those unfamiliar, realized volatility estimates are daily estimates.
+
+So as you can see your data are daily. Those are obtained by high frequency data.
+
+So what people do if they get price data.
+
+Up. Stocks up. You know their stocks in this case.
+
+So they get price data. They resample on a high frequency.
+
+Typically you see the 1 minute or 5 minute which explains why you have those two options in your data set.
+
+Uh, they don't use anything that is higher in frequency than one minute because there's a lot of noise in those data.
+
+So that's why they resample. Think my take or transaction my transaction data to either 1 or 5 minutes.
+
+And then they calculate this. Uh what are these estimates.
+
+So typically you realize variance is nothing but the returns calculated each minute or each or every five minutes.
+
+And then they sum the square of those returns during the day.
+
+So for instance, if you have the estimate of five minutes, the results is going to be that you have 79 data points each day.
+
+Every five minutes for six hours you sell a call and you get those prices.
+
+You compute the returns. So variation, price variation every five minutes.
+
+And then you sum the square of them over the whole day. That's the number you get.
+
+That's the number you see in the data. It's generalized variance estimate.
+
+And also times you realize volatility is just the square root of this quantity okay.
+
+It doesn't change much. Uh a little bit more context on what is before variation.
+
+What is a perfect what is a good and bad variance. Can be found instead.
+
+In this paper. Um. You don't need to read the whole paper.
+
+Just go to the definitions. Um, actually, I think the wrong people don't realize that.
+
+Now, uh, I'm going to correct that. The actual paper should be this one.
+
+They have? Uh, yeah, they have a similar.
+
+Similar entitled so the actual People, where you can find definitions of all the other variations and these this is the good variance.
+
+But variance is there. So I'm going to link that paper.
+
+I'm going to correct the slides out of class. And I'll link this paper so you can have that as a reference.
+
+In very essence, uh, realize good variation, but variance is obtained exactly as realized by.
+
+As I mentioned, this just that is the squared sum of when the returns goes up or 30 times goes down.
+
+There's like a split between what the. Split of what the release balance means.
+
+Instead of summing all the returns during a trading day, you just sum those that were positive or sum those that were negative.
+
+You know, way of saying this is going to be the portion of violence that comes from the good part when the market goes up,
+
+or this is the portion of violence that comes from when the returns goes down in that part of the body, of all the rest you'll find in the paper.
+
+So also those kind of, uh, informations that you have in that dataset are very common volatility estimators.
+
+So if you Google them you're going to find a lot of sources around uh, and on those, those kind of things.
+
+So. Regarding the units of these values.
+
+Uh, I think they're unrealized. I'm not sure about that because unfortunately, that source doesn't mention that.
+
+If I look at those numbers, they look analyze to me.
+
+So I will save referred time as analyze values, which is very common when you deal with volatility data.
+
+So that's what people do. Otherwise uh, they're very very small numbers.
+
+So they, they analyze the volatility to have uh slightly larger numbers.
+
+Because when you when you're working through small numbers, some models may be uh.
+
+May not be very easy to fit. You'll see that when you roll that towards that.
+
+That's, uh, that's an example. Any questions on.
+
+Basically the metadata of this data dataset that you have.
+
+If there was. Yeah. There is another one, uh, here that relates.
+
+So the second bullet point of this slide is saying we are unsure if we should use both like one and five minutes.
+
+Fair question. Uh, I would not use both.
+
+I will pick one side of estimates, as you can see in the Excel file.
+
+You have to get one minute estimates or five minutes estimate.
+
+And I just explain to you what that means.
+
+It means that they resample in two different frequencies and calculated the estimators that I described in the paper I was showing to you.
+
+Pick one. Usually five minutes is common.
+
+Uh, I think if you, if you compare them, they're going to be a slight differences because obviously time comes from higher frequency data.
+
+One minute and five. Uh, you can pick one.
+
+I don't have a preference, and I don't think it's going to matter a lot.
+
+For the sake of the forecasting problem, you're going to say to. So pick one.
+
+Just use that dot mix to do not use.
+
+Do not predict realizable if within five minutes using predictors.
+
+That comes from estimator. Uh that you want me to level data to do not mix.
+
+Um. Then again, related to that, someone says, um, we are having trouble, uh, touring, doing feature engineering.
+
+Um, often correlated and noisy.
+
+So that noise is everywhere in finance.
+
+So everywhere in 90, probably. If there's no noise, you don't have a problem to solve.
+
+It's probably very easy, uh, to, to do, uh, anything.
+
+So noise is complex. Uh, I wouldn't even, uh, mention that.
+
+It's obvious. Uh, those quantities are correlated.
+
+They're certainly correlated because they are coming from estimates that in some way they use returns at high frequency level.
+
+So if you look at the definitions of them, it's normal that they are correlated.
+
+So usually a good benchmark you can find a good benchmark at that that link.
+
+Or you can Google it. It's called Har model. Um it's such a regressive model.
+
+It's basically the. The standard benchmark for volatility problems.
+
+Uh, if you if you look at that paper, you'll see that that can be your baseline.
+
+You can see how they use how they perform feature engineering.
+
+Typically what that model is doing is trying to predict price volatility the next time step or maybe uh, over some days in the future.
+
+So, uh, that depends on the kind of task you want to solve.
+
+You'd be want to predict reliability tomorrow. You may want to predict price volatility in five days, or the average, uh, in the next five days.
+
+And the regressors that they use, that's a simple linear regression model.
+
+That's why it's a it's going to be your baseline for this problem. The regressors are basically three which is the first leg.
+
+So relatable to yesterday. The average of volatility between uh two days ago and five days ago.
+
+So that's a lot of these features like which you already included.
+
+And then the average over the last 22 days, excluding the first five legs, which you already included.
+
+So it's basically including three regressors that accounts for three different types of frequencies daily,
+
+weekly and uh, and monthly, because you have 22 trading days in a month.
+
+But that's your baseline. I will start from there and complicate the model.
+
+There are a lot of versions of the this model around leverage on those data.
+
+What you could do, since this is a machine learning class, is thinking in terms of what if instead of a linear model, I use something else I can try.
+
+I can try some of the models we have seen in class.
+
+I can try even models that we have not seen in class, but they belongs to the machine learning realm and try to see if you perform better than that.
+
+So um, typically for any kind of task.
+
+Is going to need a benchmark. So that's something. Uh, that's probably the most important takeaways of today.
+
+There's a lot of questions revolving around that. When you are testing a model on a problem, you always need a benchmark.
+
+Think about what you've done in the meantime. I told you to train a couple of models and compare to a dummy classifier.
+
+Now that's a very easy benchmark to beat. But that's the idea you need to have something to compare against.
+
+Think about not giving up. Now you see a model.
+
+You get a result. So let's assume you fit a regression model.
+
+You get a mean squared error out of sample. It's going to be a number that which depends on your data.
+
+So what? What do you do? You have that number.
+
+What can you tell? You can tell people. This is my musical genre.
+
+So what is it better than something else? So that's why you always need a benchmark.
+
+Always think about the performance of your model relative to something else and that relative to something, that something else should be a benchmark.
+
+So what's a benchmark? Actually.
+
+That may be confusing a benchmark. You may think about something that you want to aim to.
+
+Let's call it baseline. So it's something that is simple.
+
+It's known to solve that problem, like the air model in this case.
+
+And it's something that you should beat if you want to, uh, fit a more complex model.
+
+So think about what our guest speaker said the other day.
+
+Typically, it's not that you had to use machine learning mandatorily.
+
+You don't have to use neural networks trees.
+
+Uh, if you don't need them, if, um, linear model is performing well, you're going to use a linear model because it's easier to explain.
+
+It's faster to fit. It's just one second instead of, uh, some time that you need to train, uh, especially neural networks.
+
+So what you want to see is a is an improvement over a baseline.
+
+Because if you see that improvement that you can justify okay, this is going to take a little bit more time to train.
+
+But I had that benefit. And so you see that there's a there's a trade off basically.
+
+Does this make sense. Always have a baseline, not just for this project in general.
+
+When you when you're modeling, you want to have a baseline. Because your model that has as to beat that baseline.
+
+Otherwise probably it's not a very good model. You don't need to over complicate, uh, the story here.
+
+You don't need more model capacity. You can stick with what you have.
+
+Um, as a simple, simple baseline. Um, this relates to how we were just saying what class variables should be used to predict future volatility.
+
+So I told you that's that benchmark.
+
+I just described the benchmark. They use some lags over three post frequencies.
+
+Uh daily weekly monthly. Now that said, this type of question, I know you may be very confused at the beginning.
+
+Like we don't know what to include in our model.
+
+That's part of the task.
+
+Do not expect me in this case, but do not expect people to tell you or you are going to need to use this features and use this model,
+
+because then it becomes obvious. You have seen how easy it is to train those machine learning models. You pull something from a package. You fit the data, after fit, Look at the results. Out-of-sample. Very easy. The problem is, how do you get to the point?
+
+How do you get to the point that you have a good set of features that can give you good results?
+
+Out-of-sample. That's part of the task. Looking at your data engineering features.
+
+Try different configurations, optimize hyperparameters, come up with results against the baseline and present them.
+
+That's usually the the recipe to follow very general.
+
+Then you might encounter problems during that. Uh, you don't know, uh, what kind of hyper parameters you should uh.
+
+You should too. Those are all questions you should try to answer when working on this.
+
+So we are trying to mimicking. A real application of a machine learning.
+
+Uh, statistical modeling for finance.
+
+Make sense? You agree with me? You can have objections.
+
+I'm gonna accept them. Objections.
+
+Um, then the last bullet point of this slide is saying, can we include macroeconomic or sentiment data to predict?
+
+Uh, I think this was referring to, uh, to the volatility data set is the answer is certainly yes.
+
+Actually, I encourage you to think about if you can extend the model in some way shape,
+
+you can extend the data set in some way and then enrich your models. Um.
+
+It's totally, totally possible. One, uh, challenge that you will encounter doing that.
+
+I know at this point is very common is that.
+
+You have this daily data set. So he was talking about daily dataset.
+
+So the frequency is daily, if you want include macroeconomic data, you're not going to have macro data at daily frequency macro data are either monthly or quarterly.
+
+The best you can get. Sometimes you can get weekly, but there's a lot of, uh, data collection that involves that.
+
+So if you want ready to use macro data, you're going to find monthly and quarterly.
+
+So how do you reconcile this problem? I have daily data probably gonna predicting something that is at the daily level like reliable.
+
+Now I have quarterly data. That's a problem because you need you know, that you need to align.
+
+Um, but when you're working with structured data so you have people you need to align the frequencies.
+
+But if you have monthly, you're going to have a lot of missing values because for uh, in this case we have stocks data.
+
+So for 22 days in a month you're going to have just one value or the rest will be missing values up until the next month and so on.
+
+I don't have a good answer on how to deal with that, because actually there are no models that can deal with that.
+
+There are models that can deal with the opposite problem. So for instance, if you want to predict a monthly variable.
+
+Using daily variables, they in some way aggregate the information at the daily level to predict something monthly.
+
+If you have the opposite problem, I don't have a good, um, answer to you.
+
+Uh, I'm going working at working as a research problem on this, so maybe at some point during the next checkpoint,
+
+I can share with you what I have and maybe share the model with you.
+
+You can try the study that should allow you to predict with mixed frequency.
+
+Like in the example that we are mentioning here. But as of now, I don't have a lot to to say.
+
+I just want to warn you that if you are caring about introducing macroeconomic data, you are going to encounter this obstacle, uh, sentiment data.
+
+It's different because sentiment data usually comes from text.
+
+Or you may find an index, uh, that refers to the sentiment about the certain market stocks, market and topic.
+
+And that can typically be found at the daily level. So that should be that should be fine in terms of data integration.
+
+Any questions on this? Oh, I knew this was going to happen.
+
+I said, this is going to happen in ten minutes because I forgot about that.
+
+Uh. That's fine. You can leave. I'm going to clean later. I'm just gonna.
+
+Yeah. If you. Okay. Thank you so much. Uh, okay.
+
+So no questions on this. Let's, uh.
+
+Going. Okay. So obviously we're talking about volatilities.
+
+And someone asked this. So we have financial times series. We don't know about much about ARIMA or GARCH model. Okay. Um, you've probably were not in my class, um, in 20 because we we touch that. It's okay. It may happen that you didn't know about that. So your goal here is to go beyond those standard approaches, or at least try to go beyond that.
+
+You can say it's, uh, I'm not going to be able to beat those benchmarks.
+
+So I will treat ARIMA or GARCH as baselines again.
+
+They can be model that you can use to fit those, uh, those kind of approaches.
+
+Actually, the HAR model is an auto regressive model.
+
+So it can fall under the umbrella of, uh, of a ARIMA model.
+
+Um, if you feel you need to expand your knowledge in that direction, what you can do is, since those are anonymous questions,
+
+uh, I mean, I know the groups that ask about that, but if that group, the group that has come about that wants.
+
+I can share some materials with you. I don't have the time to cover those topic in this class because they have been covered in other classes.
+
+If you want, you can reach out. I'll share, uh, materials with you.
+
+Uh, and this is interesting.
+
+So, uh, should we, for the sake of reading, because obviously you're always projected in that direction for the sake of reading.
+
+Should we prioritize interpretability of performance?
+
+Uh, so I'm not gonna judge if your model is interpretable or not.
+
+For this project. Now, we know it's a very important aspect.
+
+We have heard our guest speaker the other day talking about that.
+
+It's something that people care about in the industry. So I'm not saying it's not important.
+
+It's very important, but. I assume that if you are here, it's the first time you are dealing with this kind of things.
+
+So the first objective is going to be.
+
+So let's try to beat some baseline. Let's try to come up with models that performs well.
+
+Then we are going to think about explainability later. Probably.
+
+Not in this class or towards the very end.
+
+So my, um, my idea is that in some of the project check points, I can share a bit more about how can you explain the model?
+
+More complex models, like after you fit, um, I mean, samples of trees.
+
+Can you provide some sort of feature importance? You can, uh, I'm going to show you how or after I feed, um, a neural network.
+
+Is there some way I can see what are the drivers of the prediction?
+
+There are tools to to deal with that. So I would say think about performance, that if you have time, you're going to work on explainability.
+
+It will be, uh. Doing the opposite will be weird.
+
+So caring about the explainability without not even trying something that can performs better.
+
+Um, it's, um, seems counterintuitive. Again, if you think about our guest speaker two days ago, what he said was it's right.
+
+More complex model, usually referred to as black box.
+
+Typically when when you see a black box, it's going to be a neural networks that are very large ensamples of trees.
+
+If the performance is large enough, then you try to explain that if the performance is not large enough compared to obvious, then you discard that model.
+
+So you don't even need to think too much about. I need to explain that model if it doesn't perform way above a baseline.
+
+I'm going to skip that. So. Takeaway: Prioritize performance for the sake of your, um, your project.
+
+Then I had in the past, students presented projects, and at the end of the presentation, they had some sort of explainability.
+
+So that's why I said I'm going to touch on those topics so you can.
+
+Try. If you want, you can try to make a sense of, uh.
+
+What is driving your prediction? It's totally possible, but as a first set, prioritize performances.
+
+Okay, so this is the part on, uh, how to be a model, how to evaluate a model.
+
+Um, so this question and see again is pointing into, in the direction of, uh, how do we know if all our predictions are good enough?
+
+Um. And exactly the question whether really point in that direction.
+
+Is there an official standard? Yes. Typically there is.
+
+So for the volatility case you had that model that I just mentioned.
+
+So there is a benchmark or a baseline.
+
+Uh, in general for if you want to think in terms of a broad, uh, task that you can solve, if you're solving a classification problem,
+
+you're probably trying to do that with a more complex model, like it's going to be your baseline.
+
+We have seen that in class. You were actually doing that to.
+
+Thank you. So no one knows the answer.
+
+Thank you so much. So if you're solving a classification problem, you have a model.
+
+Let's say I have a tree ensamble. Large random forest classifier is sorting a classification problem?
+
+And I can look at the results. And I have my usual, uh, F1 score.
+
+I have my precision, my recall. So what do I do? Do I look at that and alone?
+
+No, because that's what I just said. I need a baseline.
+
+What's my baseline in that case? Are we classifying?
+
+It's a dummy classifier. So dummy classifier is what I asked you to do during the midterm.
+
+It's not very hard to beat. So you're right.
+
+That can be a baseline. I would say that's a baseline to make sure that you're not doing anything wrong.
+
+Because if you don't beat a dummy classifier,
+
+it means that something is wrong with either the way you're passing the data or the way you design your model.
+
+Maybe a baseline can be something more, a little bit more complex.
+
+We have seen that quality class at the very beginning of the semester.
+
+No one knows. You remember both.
+
+Logistic regression. You know what logistic regression do?
+
+Yeah. Do you remember for sure. So it's a simple linear classifier.
+
+If I ever worked on a classification problem, I would like my classifier to be.
+
+How would you stick regression? Because the idea with many of those machine learning models is that you increase your capacity,
+
+so you increase the expressiveness and you're trying to learn nonlinear function of the data.
+
+You're going to see that after the fall break with neural networks.
+
+That's fixed the whole intent of a neural network.
+
+But that's also been kind of threes. So from now, by adding this additional capacity to your model, you're not beating a baseline that is linear.
+
+You don't need that model. You need somebody. You can stick with the logistic regression.
+
+So there is an official standard that you can think of for any problem.
+
+Logistic regression is for classification. If you have a regression problem. Your official standard is going to be a linear regression.
+
+That's exactly what it said for the volatility problem is that model, the popular model HAR for volatility is which is actually a regression problem.
+
+It's some regressors carefully designed for that specific problem.
+
+But at the end of the day, it's something of regression that you fit with OLS exactly as you would expect.
+
+So that's going to be your your baseline.
+
+Uh, given the resource you are currently, we're not sure if you have enough computational power.
+
+So that's something you ask yourself. When is when you're training models like.
+
+I would love to see a question that is like, we have this data arranged this way.
+
+If you are trying to fit this model, this architecture, this site, this size, blah blah, blah blah, and now it takes seven hours to train.
+
+What do we do? That's a question. This is not a question. This is.
+
+General like you can have problems. You're going to have problems for sure.
+
+But this is kind of projecting yourself into the future. I don't I don't think you have encountered any bottlenecks so far.
+
+If so, tell me. We can address that. But this is not giving me enough context to help you because, okay, for sure, you're going to have, uh, problems.
+
+Uh, typically how to how do you solve, uh, computational bottlenecks?
+
+You try to run on, uh, on, on GPUs, but a lot of people spend a lot of time of year, the grid searching for the,
+
+uh, um, to base model, like more than an hour to to to run, like, oh, an hour is nothing.
+
+It's nothing. Okay. Yeah. You should be at peace.
+
+It only takes one hour. But what what can be the problem for an hour, you know, so there is no visualization of the parameter.
+
+So that relates to the size of the data set obviously. Uh, but like if you're using data you don't have that big dataset.
+
+So probably you're trying on a two large grid. Uh.
+
+You're running. You're trying to run. A full grid search over a lot of combinations.
+
+So. That's it. That's a good question that we can address.
+
+So if you're trying to run a full grid search you don't need to. You can try to run a stochastic grid search.
+
+So create a grid. Look how large is your breed.
+
+So look at how many combinations.
+
+So in order to look at how many combinations you have, just multiply the options for each of the hyper parameters in the grid.
+
+If you end up seeing 10,000 that's too much.
+
+That's right. But you have a solution instead of trying each of them.
+
+You can try a stochastic grid search. So you can say instead of 10,000, I'm going to try 300 samples at random,
+
+because the idea is that I'm going to sample in this piece of hyperparameter combinations.
+
+And if I run I'm going to pick more or less each part of the grid.
+
+So I'm going to try several configurations because imagine that when you run the whole grid,
+
+many combinations are similar because many combinations just if you're if you're changing five hyper parameters, you're just modifying one.
+
+So many of them are similar, so there's no point in trying all of them. Simple at random.
+
+It's better. That's one way. Um.
+
+Sometimes I will. We'll talk about that.
+
+It may happen that and it's not the case of qualitative data, but if you have larger data sets you may want to.
+
+Retrain your model. So instead of taking all the data and train your model,
+
+which is going to be to too long of a run time, just check the data set train test, train test.
+
+So train on a logic window. Because that is going to reduce the 20 runtime.
+
+And it's kind of a workaround around this problem. That said, typically computational bottlenecks are solved if you use GPUs.
+
+Now, I don't have GPUs to provide to you. Uh, so we're kind of constrained in this class, but.
+
+For the size of the data set you you will work on.
+
+So we don't need that. We can discuss if you encounter bottlenecks.
+
+Try to be specific. We're address that problem.
+
+It answered the question. So what size of a data set can be considered as a big data set?
+
+Like how many rows and how many columns combination? So for data you have daily observations.
+
+So I don't remember like it goes back to 2000.
+
+So you probably have 6000 observations for each stock.
+
+It's not that big. Okay. Um. It becomes large when you start having untruths 2000 200,000 to 300,000 realized voluntarily.
+
+Yeah. Not you're not going to have realized volatility under thousand observation because you don't have 100,000 days.
+
+Uh uh, but but for real, I'm talking about other datasets.
+
+So if you want to, I don't know, predict returns at the minute level for 30 years, that you have a lot of observation.
+
+So more data means more computational time.
+
+Also different models will have different runtimes. Um, you're going to see.
+
+What recurrent neural networks need. When you when you when you train those models, the problem time becomes really large.
+
+So you want to pay attention on that work by saying to realize volatility I think there's a like arbitrary regularity, right?
+
+Granularity and granular like not the data or the data that you have already got.
+
+They are obtained from high frequency data that are obtained from either 1 minute or 5 minutes level data, but then they are aggregated together.
+
+So the number you see in that Excel spreadsheet is exactly.
+
+You don't touch high variance. Okay.
+
+So, um, this is about extreme events.
+
+So very good question. Um, after doing some data visualization, there are spikes during the prices of, uh, very large that's expected.
+
+How do we, um, if if we choose to do the forecast, how do we deal with that?
+
+Basically, uh, we have spikes. Okay, so that's expected.
+
+That's what you want to see. So why is that not financial data?
+
+Uh, so financial data are, uh, known to be, uh, very non-stationary.
+
+Uh, so you have those kind of, uh, kind of regimes and volatilities are actually, uh, through marketing of that.
+
+So what would what do you do?
+
+Certainly you don't want to remove those outliers because those are integral part of the data that you want to leverage on.
+
+Uh, one. Uh, one one way to solve that is to experiment with different training windows.
+
+So instead of taking all the data set.
+
+So again I don't remember I think it starts in 2003.
+
+You don't want to take 2003 from 2024 and train up the whole thing.
+
+You may want to restrict the training window and do a rolling training.
+
+So you train on the. On five years of data and test on the next year.
+
+Then you roll that window by one year. Then again, train on five.
+
+That's the one. So you retrain your model. This is actually helping with controlling this uh, is behavior of uh, non-stationarity of your variables.
+
+And also it's actually closer to what happens in practice because when you fit those models in practice, you constantly retrain them.
+
+You don't train a model one time and you use it.
+
+You want you may want to refine the prediction of your model by pre-training when new data arrives.
+
+So you take your historical data set, and you try to mimic this behavior by doing training, testing, training, testing.
+
+Obviously, since they are time series, training tests are always consecutive.
+
+You never mix them, but you shift. Makes sense.
+
+Actions. Okay, so, um, this is on.
+
+Um, how can we, uh, classify my property? Basically, um, high volatility versus low volatility.
+
+So, uh, here I can give you some direction.
+
+That's actually part of the task you should solve. Like. We have decided to, uh, trying to classify Regime so very first rate.
+
+But first thing to think about is otherwise specify origin.
+
+What's the definition of regime? Uh, the very first thing I would do, I would do a quick research on.
+
+What people have done in that direction. How can I recognize regimes and financial data and start from there.
+
+Uh uh, a very cool starting point can be also, uh, identifying thresholds.
+
+So you look at your historical data and you and you and you see if you can find a common threshold for your data.
+
+Problem is that that is typically and handmade.
+
+So you're not, uh, asking a model to do that.
+
+There are models, machine learning models that can, uh, can be used to detect regimes or uh, you can also think of them in terms of anomalies.
+
+So you want a machine learning model to detect anomalies. Um, I haven't linked that.
+
+So I can add on to this slide deck since I need to change that link.
+
+Um, I can point you to, um, basically the equivalent of a random forest, but not for doing regression or classification, but to detect anomalies.
+
+That's called isolation forest. The logic, it's very similar to random forest in a sense that you train some trees in parallels.
+
+But the goal is different. The goal is to look at the data and identify anomalies like large, large, uh. Large outliers in the data which basically are described here.
+
+So I can link that I can use. I could use that as a starting point.
+
+But I always recommend to, to look around what, uh, what other people have been doing.
+
+And this is general to any, any part of this project.
+
+You can look at sources you can find. It doesn't have to be an academic paper.
+
+It can be, uh, a blog post of someone did play with similar data.
+
+They did something interesting that you want to replicate and use as a starting point to do something different.
+
+I'm totally fine with that. You can use those sources.
+
+You don't have to necessarily to come up with something new from scratch.
+
+Because that's not what happened in practice. People try to build on top of what has been done before.
+
+Evaluation criteria. That's for the grading part.
+
+Um, you're wondering wondering if grading will depend on model performance compared to other teams or of focus more on the creativity or reasoning.
+
+So let's clarify. I'm not going to compare among teams.
+
+I don't I don't want to add that we could have that level of competition, but I'm not going to do that.
+
+Uh, so I'm going to evaluate each, uh, each project presentation stand alone.
+
+Now, obviously there is a little bit of comparison, since I'm going to agree that there is a little bit of discretion.
+
+So if someone does a magnificent presentation, you want to try to adopt, because that is going to be, uh, a certain level of comparison in that sense.
+
+I'm not going to look at the numbers that says, oh, the previous team got a better MSE.
+
+So I don't think I don't think you've done a good job. That's not going to happen for two reasons.
+
+Because you would be extremely unreasonable to do that.
+
+Because each team will follow a very specific direction. Maybe you will engineer the data, uh, in different ways.
+
+So the MSE are not directly compatible unless you really follow the same strategy.
+
+For instance, I can grade your midterm easily because you always you follow the same strategy.
+
+You have the same data set. You can use the same information.
+
+You know what to do. That's it. So it's compatible.
+
+I can take the F1 score of different. No, that wasn't really part of the grading,
+
+but I can take the F1 score of each grading submission and compare because more or less you add on the same playground.
+
+I'm working on a project. All sorts of things can happen when you deal with your data.
+
+So comparing numbers among teams, it's not going to be, uh, reasonable.
+
+Now, the way I'm going to evaluate you, I'm going to follow the evaluation template that you can see here.
+
+Uh, let's see if we have a good visualization of that. Okay.
+
+So as I told you when I introduced the project is going to be 60% of the technical parts, 40% the oral presentation.
+
+So, um, and I'm going to basically pick each subcategory and assign a number between 1 and 5.
+
+And then I'm going to average them and average those numbers, rescale.
+
+And basically uh, each of those um, broad set of uh.
+
+Category between 60% and 40%, as I told you of the oral part, is going to be important because it's totally meaningless.
+
+If you can do a very good technical job and then you can not present that you know your terms.
+
+So the way you are going to produce your slide deck, present to the audience and the way you're going to interact when you're going to be here.
+
+So, uh, you need to be confident about your work because that's your work.
+
+Your you'll be the person that. No. Most about what you're presenting.
+
+You should be confident. And I'm going to say that now so you can have time to work on.
+
+I would prefer if you come here and present without reading a script.
+
+So don't come here with the full on the reading the stuff. Try not to read the slides because the audience can understand.
+
+Do not read a piece of paper. Try to study your presentation.
+
+Come here and be natural. For obvious reason, I'm not going to evaluate the English as I'm not the right person to do that.
+
+So this is not about the language. It's about confidence.
+
+Coming here having got organized logic, logical way to to expose your material without reading a script because.
+
+It doesn't give a good impression to the audience. So you don't want to do that at work for sure.
+
+Also, um, it becomes boring really fast.
+
+So people, you will lose the audience pretty fast.
+
+I mean, you won't lose me because I have to grade you, but you will lose everyone else.
+
+So you want to, uh, keep people active?
+
+Engaged? Try to work on that.
+
+You have time. Practice before the final presentation and good.
+
+Now the evaluation template is there. You can have a look. Um, I'm not sure if you discussed how long each presentation will be.
+
+Uh, it's in, uh, it's in the, uh, project slides the first time I introduce them.
+
+I think it's 20 minutes, because this semester we have more time.
+
+Um, let's double check. Um, because before I was giving 15 minutes.
+
+But we were more people, so more groups. Should be 20.
+
+So you'll have 20 minutes and five minutes for questions.
+
+So we're going to split up the presentation today. To different things.
+
+Yes. Yeah that's for sure because we don't have enough time.
+
+Uh, yeah. 2020 plus one. Um, yeah.
+
+Before. Before the, uh, the for sale presentation, we're going to randomly draw.
+
+We're going to present first. It's not going to matter much because just two days more, uh, the deliverable will be sent before.
+
+So you I would expect the teams that present them Thursday not working on that.
+
+Uh, not adding more stuff. Obviously, you can practice your presentation, but do not add more work in the last few days.
+
+Uh, just to be fair, with everyone else. Uh, what else about this?
+
+Uh, I don't want to say. Um.
+
+Yeah, I think I that. Anyway, um, it is clear that we'll get back to it, uh, if we need to.
+
+That is it substitution? Uh, are we allowed to import an external dataset to substitute or complement?
+
+You can complement, not substitute, because substitute means that you are going to use a different dataset.
+
+Try to work on what I provide to you. You can go beyond in a sense that you integrate, but use those data.
+
+Extremely important. This is a big yes.
+
+Should you decide which to use right now? Yes.
+
+If you haven't done it, decide today. It's already late.
+
+Remember that there is a fall break. And then basically five weeks after that, you know, I'll fast.
+
+Five weeks passed. Super fast. So if you haven't decided yet, decide today, tomorrow with your teams.
+
+Start working. Because the more you of course on that, you're nothing.
+
+But that's a that's crucial. That's a very good milestone.
+
+And we decided what we want to on which dataset we want to follow that we maybe we have and decide what kind of modeling problem we want to solve.
+
+But at least the dataset has to be decided on. Not questions.
+
+Yes. But when we try to say anything, we.
+
+I mean, uh, try to get together additional data, um, some data, uh, maybe like, uh, like, uh, phone rates.
+
+They can be, uh, arbitrary. They can be, uh, got from the Treasury website, uh, only monthly.
+
+Weekly. And. Yeah. So if they can only get it from capital IQ.
+
+So how can we mix that up together?
+
+Yeah. That's what that's what I said before that that sometimes the problem is that you have different frequencies and and so
+
+if you're working on daily data every month ah the monthly data now will have a lot of missing values to your problem.
+
+Uh. And I don't have a I mean get solution for that.
+
+Uh, maybe next time I can show you, uh, what I'm working on in terms of using models that can deal with mixed frequency data.
+
+But it's a neural network, so I need to introduce neural nets first.
+
+Maybe I can provide that model that you can try. But bear in mind that if you are importing,
+
+if you try to complement with features that are lower frequency than your original frequency of the data set, you're going to have that problem.
+
+Because when you align observation, you have a lot of issues.
+
+You could have always the same value, but that doesn't have a lot of information to your model.
+
+Because basically for one month of data, assuming you have data now, you had a monthly for one month of data.
+
+Your model will always see the same value. Not very informative.
+
+The opposite can be done. If you have data, data and you have some source of high frequency data.
+
+You cannot get that information because you can resample at the beginning of that and add that information each day.
+
+Does that answer your question? Other questions.
