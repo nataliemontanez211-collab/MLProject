@@ -138,11 +138,19 @@ celerybeat.pid
 .env
 .envrc
 .venv
+.venv/
 env/
 venv/
 ENV/
 env.bak/
 venv.bak/
+__pycache__/
+
+# macOS System File
+.DS_Store
+
+# Ignore temporary Excel files
+~$*.xlsx
 
 # Spyder project settings
 .spyderproject
